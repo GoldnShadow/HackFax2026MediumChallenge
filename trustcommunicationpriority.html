@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart-DB | VAULT_ROOT</title>
+    <style>
+        body { 
+            background: #0a0a0a; 
+            color: #ffb3c1; 
+            font-family: 'Courier New', Courier, monospace; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+        .vault-card {
+            background: #1a0208;
+            padding: 3.5rem;
+            border: 2px solid #ffd700; /* Gold Border */
+            border-radius: 4px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.15), inset 0 0 20px rgba(255, 215, 0, 0.05);
+            max-width: 500px;
+        }
+        .heart-icon {
+            font-size: 60px;
+            margin-bottom: 25px;
+            display: inline-block;
+            animation: pulse 1.2s infinite ease-in-out;
+            filter: drop-shadow(0 0 10px #ff4d6d);
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        h1 { 
+            color: #ffd700; 
+            margin: 0; 
+            letter-spacing: 6px; 
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .subtitle {
+            font-size: 0.8rem;
+            color: #ff4d6d;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+        .flag-container {
+            background: #000;
+            border: 1px dashed #ffd700;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+        }
+        .flag-text {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+        .footer-note {
+            font-size: 0.7rem;
+            opacity: 0.5;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="vault-card">
+    <div class="heart-icon">❤️</div>
+    <h1>VAULT_UNLOCKED</h1>
+    <div class="subtitle">AUTHORIZATION: OMEGA-LEVEL ADMIN</div>
+
+    <div class="flag-container">
+        <div class="flag-text">FLAG{H3ART_0F_TH3_MACH1N3}</div>
+    </div>
+
+    <div class="footer-note">
+        [SYSTEM]: All encryption layers bypassed.<br>
+        [SYSTEM]: Data integrity verified 100%.<br>
+        [SYSTEM]: Welcome home.
+    </div>
+</div>
+
+</body>
+</html>
