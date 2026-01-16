@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart-DB Login</title>
+    <style>
+        body { background: #120105; color: #ffb3c1; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .login-card { background: #200209; padding: 2rem; border-radius: 8px; border: 1px solid #ff4d6d; width: 350px; text-align: center; box-shadow: 0 0 20px rgba(255, 77, 109, 0.2); }
+        h2 { margin-top: 0; color: #ff4d6d; }
+        input { width: 90%; padding: 10px; margin: 10px 0; background: #000; border: 1px solid #ff4d6d; color: white; border-radius: 4px; }
+        button { background: #ff4d6d; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; width: 100%; }
+        button:hover { background: #ff758f; }
+        #console-output { background: black; color: #0f0; font-family: monospace; padding: 10px; margin-top: 20px; text-align: left; font-size: 0.8rem; min-height: 40px; border-radius: 4px; overflow-wrap: break-word; }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <h2>❤️ Heart-DB Login</h2>
+    <input type="text" id="user" placeholder="Username">
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="dbQuery()">Connect to Vault</button>
+    
+    <div id="console-output">
+        SYSTEM: Waiting for input...
+    </div>
+</div>
+
+<script>
+    async function sha256(message) {
+        const msgBuffer = new TextEncoder().encode(message);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    async function dbQuery() {
+
+        const managementHash = "eba6335f6068307c4b4b2464478d52317135e5d120a232f38a531f82f254199c";
+
+        const acceptingHash = "eba6335f6068309c4b4b2164478d52317135e5d120a232f38a531f82f254199c";
+
+        const resourceHash = "eba6335f6068307c4b4b2164478d52317135a5d120a232f38a531f82f254199c";
+
+        const u = document.getElementById('user').value;
+        const p = document.getElementById('pass').value;
+        const log = document.getElementById('console-output');
+
+        log.innerHTML = `QUERY: SELECT * FROM users WHERE username='${u}' AND password='${p}';`;
+
+        const crush = p.includes("' OR '1'='1") || p.includes("' or '1'='1");
+
+        const targetHash = "eba6335f6068307c4b4b2164478d52317135e5d120a232f38a531f82f254199c";
+
+        const hearted = `
+     ***********                  ***********
+  *****************            *****************
+*********************        *********************
+***********************      ***********************
+************************    ************************
+*************************  *************************
+ **************************************************
+  ************************************************
+    ********************************************
+      ****************************************
+         **********************************
+           ******************************
+              ************************
+                ********************
+                   **************
+                     **********
+                       ******
+                         **`
+        setTimeout(() => {
+            if (u === "admin" && crush) {
+                log.innerHTML += "<br>STATUS: Access Granted. Logic bypass detected.";
+                log.style.color = "gold";
+
+                sessionStorage.setItem("login_status", "authorized");
+
+                setTimeout(() => { 
+                    window.location.href = targetHash + ".html"; 
+                }, 1500);
+            } else {
+                log.innerHTML += "<br>ERROR: Invalid Credentials. Query returned 0 results.";
+                log.style.color = "#ff4d6d";
+            }
+        }, 800);
+    }
+</script>
+
+</body>
+</html>
